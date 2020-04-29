@@ -1,0 +1,34 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["ESNext"],
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "pretty": true,
+    "strict": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "declaration": false,
+    "sourceMap": true,
+    "module": "CommonJS",
+    "baseUrl": ".",
+    "noImplicitAny": true,
+    "strictNullChecks": true
+  },
+  "exclude": [
+    "dist/",
+    "node_modules/"
+  ],
+  "include": [
+    "**/*.ts"
+  ]
+}

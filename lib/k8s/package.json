@@ -1,0 +1,16 @@
+{
+  "name": "@dpu/jkcfg-k8s",
+  "version": "0.0.3",
+  "description": "Library for working with Kubernetes using @jkcfg",
+  "main": "dist/index.js",
+  "files": [
+    "dist/",
+    "types/"
+  ],
+  "types": "types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "github:digital-plumbers-union/jkcfg",
+  "license": "MIT"
+}

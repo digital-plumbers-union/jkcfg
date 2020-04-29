@@ -1,0 +1,21 @@
+{
+  "name": "@dpu/nfs-client-provisioner",
+  "description": "Generates nfs-client-provisioner manifests using jkcfg",
+  "main": "dist/index.js",
+  "version": "0.0.3",
+  "files": [
+    "dist/",
+    "types/"
+  ],
+  "types": "types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@dpu/jkcfg-k8s": "0.0.3",
+    "@jkcfg/std": "0.3.2",
+    "lodash-es": "4.17.15"
+  },
+  "repository": "github:digital-plumbers-union/jkcfg",
+  "license": "MIT"
+}
