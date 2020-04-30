@@ -1,0 +1,20 @@
+{
+  "name": "@dpu/bazel-remote-cache",
+  "description": "Kubernetes manifests for a Bazel remote cache (https://github.com/buchgr/bazel-remote)",
+  "version": "0.0.7",
+  "dependencies": {
+    "@dpu/jkcfg-k8s": "0.0.7"
+  },
+  "files": [
+    "dist/",
+    "types/"
+  ],
+  "types": "types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "github:digital-plumbers-union/jkcfg",
+  "license": "MIT",
+  "type": "module",
+  "module": "dist/index.js"
+}

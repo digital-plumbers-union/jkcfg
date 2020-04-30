@@ -24,7 +24,6 @@ export const ingress = {
 };
 
 /**
- * Defaults to local-path because you can submit a PR
  * @param size
  * @param storageClass
  */

@@ -114,7 +114,7 @@ const tautulli = (p: Partial<typeof params>) => {
     );
   }
 
-  cmp.add([pvc, deploy.resource, svc].map(addNamespace(namespace)));
+  cmp.add(namespacedResources.map(addNamespace(namespace)));
 
   if (namespace !== 'default') cmp.add(new k8s.core.v1.Namespace(namespace));
 
