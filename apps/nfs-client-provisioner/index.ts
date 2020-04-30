@@ -1,9 +1,12 @@
-import { App } from '@dpu/jkcfg-k8s/app';
-import { Container } from '@dpu/jkcfg-k8s/container';
-import { Deployment } from '@dpu/jkcfg-k8s/deployment';
-import { appNameSelector } from '@dpu/jkcfg-k8s/labels';
-import { VolumeTypes } from '@dpu/jkcfg-k8s/models';
-import { image, name } from '@dpu/jkcfg-k8s/parameters';
+import {
+  App,
+  appNameSelector,
+  Container,
+  Deployment,
+  image,
+  name,
+  VolumeTypes,
+} from '@dpu/jkcfg-k8s';
 import { String } from '@jkcfg/std/param';
 import { isUndefined, merge } from 'lodash-es';
 

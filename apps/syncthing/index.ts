@@ -1,21 +1,21 @@
 // import separately due to transform paths bug
-import { App } from '@dpu/jkcfg-k8s/app';
-import { Container } from '@dpu/jkcfg-k8s/container';
-import { Deployment } from '@dpu/jkcfg-k8s/deployment';
-import { Ingress } from '@dpu/jkcfg-k8s/ingress';
-import { appNameSelector } from '@dpu/jkcfg-k8s/labels';
-import addNamespace from '@dpu/jkcfg-k8s/mixins/namespace';
-import { KubernetesObject } from '@dpu/jkcfg-k8s/models';
 import {
+  App,
+  appNameSelector,
+  Container,
+  Deployment,
   image,
   ingress,
+  Ingress,
+  KubernetesObject,
   name,
   namespace,
   persistence,
   port,
-} from '@dpu/jkcfg-k8s/parameters';
-import { PVC } from '@dpu/jkcfg-k8s/pvc';
-import { svcPort } from '@dpu/jkcfg-k8s/service';
+  PVC,
+  svcPort,
+} from '@dpu/jkcfg-k8s';
+import { addNamespace } from '@dpu/jkcfg-k8s/dist/mixins/namespace';
 import * as k8s from '@jkcfg/kubernetes/api';
 import { String } from '@jkcfg/std/param';
 import { isUndefined, merge } from 'lodash-es';

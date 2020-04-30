@@ -40,15 +40,18 @@ const license = 'MIT';
 
     const outputPkg = {
       ...pkg,
-      main,
       types: 'types/index.d.ts',
       files: ['dist/', 'types/'],
+      type: 'module',
+      module: main,
       publishConfig: {
         access: 'public',
       },
       repository,
       license,
     };
+
+    delete (outputPkg as any).main;
 
     signale.info(`writing package.json for ${workspace.name} to ${outPath}`);
     await outputJSON(outPath, outputPkg, { spaces: 2 });

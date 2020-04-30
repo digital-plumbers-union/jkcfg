@@ -1,20 +1,20 @@
-import { App } from '@dpu/jkcfg-k8s/app';
-import { Container } from '@dpu/jkcfg-k8s/container';
-import { Deployment } from '@dpu/jkcfg-k8s/deployment';
-import { metaLabels } from '@dpu/jkcfg-k8s/label-selectors';
-import { appNameSelector } from '@dpu/jkcfg-k8s/labels';
-import addNamespace from '@dpu/jkcfg-k8s/mixins/namespace';
 import {
+  App,
+  appNameSelector,
+  Container,
+  Deployment,
   image,
   ingress,
+  metaLabels,
   name,
   namespace,
   persistence,
   port,
-} from '@dpu/jkcfg-k8s/parameters';
-import { PVC } from '@dpu/jkcfg-k8s/pvc';
-import { sealedSecret } from '@dpu/jkcfg-k8s/sealed-secret';
-import { svcPort } from '@dpu/jkcfg-k8s/service';
+  PVC,
+  sealedSecret,
+  svcPort,
+} from '@dpu/jkcfg-k8s';
+import { addNamespace } from '@dpu/jkcfg-k8s/dist/mixins/namespace';
 import * as k8s from '@jkcfg/kubernetes/api';
 import { Boolean, String } from '@jkcfg/std/param';
 import { isUndefined, merge } from 'lodash-es';

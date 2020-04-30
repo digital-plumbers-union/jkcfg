@@ -1,7 +1,7 @@
 import { isArray } from 'lodash-es';
 import { assertKubeObj, assertKubeObjArray } from './assertions';
 import { AppLabels } from './labels';
-import addLabels from './mixins/labels';
+import { addLabels } from './mixins';
 import { KubernetesObject } from './models';
 
 export interface AppOptions {
@@ -37,15 +37,17 @@ export const App = (appName: string, opts?: Options) => {
     labels[AppLabels[capitalized]] = appLabels[key];
   }
 
+  const addAppLabels = addLabels(labels);
+
   // add resources to the app, adds app labels
   const add = (obj: KubernetesObject | KubernetesObject[]) => {
     if (isArray(obj)) {
       assertKubeObjArray(obj);
       // why doesnt obj.map(addLabels(labels)) work?
-      resources.push(...obj.map(o => addLabels(o, labels)));
+      resources.push(...obj.map(addAppLabels));
     } else {
       assertKubeObj(obj);
-      resources.push(addLabels(obj, labels));
+      resources.push(addAppLabels(obj));
     }
   };
 

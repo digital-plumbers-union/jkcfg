@@ -1,11 +1,16 @@
 // import separately due to transform paths bug
-import { Container } from '@dpu/jkcfg-k8s/container';
-import { Deployment } from '@dpu/jkcfg-k8s/deployment';
-import { appNameSelector } from '@dpu/jkcfg-k8s/labels';
-import { KubernetesObject, VolumeTypes } from '@dpu/jkcfg-k8s/models';
-import { image, name, namespace } from '@dpu/jkcfg-k8s/parameters';
-import { sealedSecret as SealedSecret } from '@dpu/jkcfg-k8s/sealed-secret';
-import { finalize } from '@dpu/jkcfg-k8s/util';
+import {
+  appNameSelector,
+  Container,
+  Deployment,
+  finalize,
+  image,
+  KubernetesObject,
+  name,
+  namespace,
+  sealedSecret as SealedSecret,
+  VolumeTypes,
+} from '@dpu/jkcfg-k8s';
 import * as k8s from '@jkcfg/kubernetes/api';
 import { Boolean, String } from '@jkcfg/std/param';
 import { merge } from 'lodash-es';

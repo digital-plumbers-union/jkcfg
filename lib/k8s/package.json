@@ -1,8 +1,7 @@
 {
   "name": "@dpu/jkcfg-k8s",
-  "version": "0.0.3",
+  "version": "0.0.7",
   "description": "Library for working with Kubernetes using @jkcfg",
-  "main": "dist/index.js",
   "files": [
     "dist/",
     "types/"
@@ -12,5 +11,12 @@
     "access": "public"
   },
   "repository": "github:digital-plumbers-union/jkcfg",
-  "license": "MIT"
+  "license": "MIT",
+  "type": "module",
+  "module": "dist/index.js",
+  "dependencies": {
+    "@jkcfg/kubernetes": "0.6.0",
+    "@jkcfg/std": "0.3.2",
+    "lodash-es": "4.17.15"
+  }
 }

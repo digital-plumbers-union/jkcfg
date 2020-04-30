@@ -1,8 +1,6 @@
-import produce from 'immer';
+import { merge } from 'lodash-es';
+import { KubernetesObject } from '../models';
 
-export default (namespace: string) =>
-  produce(draft => {
-    draft.metadata
-      ? (draft.metadata.namespace = namespace)
-      : (draft.metadata = { namespace });
-  });
+export const addNamespace = (namespace: string) => (r: KubernetesObject) => {
+  return merge({}, r, { metadata: { namespace } });
+};
