@@ -2,11 +2,12 @@ import {
   appNameSelector,
   Container,
   Deployment,
-  PVC,
-  svcPort,
-  StringObject,
-  KubernetesObject,
   finalize,
+  KubernetesObject,
+  PVC,
+  StringObject,
+  svcPort,
+  VolumeTypes,
 } from '@dpu/jkcfg-k8s';
 import * as k8s from '@jkcfg/kubernetes/api';
 import { isUndefined, merge } from 'lodash-es';
@@ -14,7 +15,7 @@ import { params } from './params';
 
 const htpasswdMountDir = '/secrets';
 const htpasswdPath = `${htpasswdMountDir}/.htpasswd`;
-const cacheMount = '/cache';
+const cacheMount = '/data';
 
 const bzlremcache = (p?: Partial<typeof params>) => {
   const {
@@ -25,33 +26,32 @@ const bzlremcache = (p?: Partial<typeof params>) => {
     port,
     image,
     htpasswd,
-    maxSize
+    maxSize,
   } = merge({}, params, p || {});
 
   const selector = appNameSelector(name);
 
   const pvc = PVC(name, {
     size: persistence.size!,
-    storageClass: persistence.storageClass!
+    storageClass: persistence.storageClass!,
   });
 
   const svc = new k8s.core.v1.Service(name, {
     spec: {
       ports: [svcPort(port)],
-      selector
-    }
+      selector,
+    },
   });
 
   const env: StringObject = {
     BAZEL_REMOTE_MAX_SIZE: String(maxSize),
   };
 
-  if (htpasswd) {
-    env.BAZEL_REMOTE_HTPASSWD_FILE = htpasswdPath;
-  }
+  if (htpasswd) env.BAZEL_REMOTE_HTPASSWD_FILE = htpasswdPath;
 
   const deploy = Deployment(name, { labels: selector });
   deploy.addVolume(name);
+  if (htpasswd) deploy.addVolume(htpasswd, VolumeTypes.secret);
   const serverContainer = Container({
     name,
     image,
@@ -67,10 +67,16 @@ const bzlremcache = (p?: Partial<typeof params>) => {
   deploy.addContainer(
     merge(
       serverContainer,
-      htpasswd ?
-      {
-        volumeMounts:  [ { name: 'htpasswd', mountPath: htpasswdMountDir } ]
-      } : {}
+      htpasswd
+        ? {
+            // have to re-add PVC volumeMount because otherwise it would be clobbered
+            // here -- should resolve that more robustly
+            volumeMounts: [
+              { name: htpasswd, mountPath: htpasswdMountDir },
+              { name, mountPath: cacheMount },
+            ],
+          }
+        : {}
     )
   );
 

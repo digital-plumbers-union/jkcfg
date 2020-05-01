@@ -18,7 +18,7 @@ export const timezone = (d: string = 'America/New_York') =>
 
 export const ingress = {
   enabled: Boolean('ingress.enabled', false),
-  annotations: Object('ingress.annotations', {}) as StringObject,
+  annotations: Object('ingress.annotations', {}) as StringObject | undefined,
   tls: String('ingress.secret-name'),
   host: String('host'),
 };
