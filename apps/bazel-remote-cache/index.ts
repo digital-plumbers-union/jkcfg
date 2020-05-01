@@ -1,7 +1,7 @@
-import bazelremcache from './lib';
+import { bzlremcache } from './lib';
 import { valuesForGenerate } from '@jkcfg/kubernetes/generate';
 
-export default valuesForGenerate(bazelremcache());
+export default valuesForGenerate(bzlremcache());
 
 // also import library for direct users
-export * as bazelremcache from './lib';
+export * from './lib';

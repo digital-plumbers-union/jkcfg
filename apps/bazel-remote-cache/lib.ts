@@ -111,4 +111,4 @@ const bzlremcache = (p?: Partial<typeof params>) => {
   return finalize(resources, { labels: selector, namespace });
 };
 
-export default bzlremcache;
+export { bzlremcache };
