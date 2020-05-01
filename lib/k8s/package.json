@@ -1,6 +1,6 @@
 {
   "name": "@dpu/jkcfg-k8s",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "description": "Library for working with Kubernetes using @jkcfg",
   "files": [
     "dist/",
