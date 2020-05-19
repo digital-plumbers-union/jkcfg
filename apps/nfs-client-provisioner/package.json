@@ -1,7 +1,7 @@
 {
   "name": "@dpu/nfs-client-provisioner",
   "description": "Generates nfs-client-provisioner manifests using jkcfg",
-  "version": "0.0.13",
+  "version": "0.0.22",
   "files": [
     "dist/",
     "types/"
@@ -11,7 +11,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@dpu/jkcfg-k8s": "0.0.13",
+    "@dpu/jkcfg-k8s": "0.0.22",
     "@jkcfg/std": "0.3.2",
     "lodash-es": "4.17.15",
     "@jkcfg/kubernetes": "0.6.0"

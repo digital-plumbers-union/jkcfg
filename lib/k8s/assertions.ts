@@ -1,13 +1,6 @@
 import * as k8s from '@jkcfg/kubernetes/api';
-import { Format, stringify } from '@jkcfg/std';
 import { isArray, isObject, isString, isUndefined } from 'lodash-es';
 import { KubernetesObject } from './models';
-
-export function assertObject(val: any): asserts val is Object {
-  if (!val.metadata || !isObject(val.metadata)) {
-    throw new Error(`Metadata not present on ${stringify(val, Format.JSON)}`);
-  }
-}
 
 export function assertKubeObj(val: any): asserts val is KubernetesObject {
   if (!isObject(val) && (!val.kind || !val.metadata || !val.apiVersion)) {
@@ -21,6 +14,7 @@ export function assertKubeObjArray(
   if (!isArray(val)) {
     throw new Error(`${val} is expected to be an array`);
   }
+  val.map(assertKubeObj);
 }
 
 export function assertEnvFromSource(

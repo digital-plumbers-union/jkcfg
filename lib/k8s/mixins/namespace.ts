@@ -1,6 +1,6 @@
-import { merge } from 'lodash-es';
+import { commonMetadata } from '@jkcfg/kubernetes/transform';
 import { KubernetesObject } from '../models';
 
-export const addNamespace = (namespace: string) => (r: KubernetesObject) => {
-  return merge({}, r, { metadata: { namespace } });
-};
+export const addNamespace = (
+  namespace: string
+): ((r: KubernetesObject) => KubernetesObject) => commonMetadata({ namespace });

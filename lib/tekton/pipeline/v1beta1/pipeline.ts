@@ -1,21 +1,27 @@
-import { ResourceDeclarations, ResourceDeclaration } from '../v1alpha1/resource';
 import {
-  ParameterSpecs,
-  Parameters,
-  ParameterValue,
-  ParameterSpec,
-} from './param';
-import { Workspaces, Workspace } from './workspace';
-import { taskSpec, taskRef } from './task';
-import { TaskOptions, TaskRef, Task } from './task';
-import { resource } from './common';
-import { objToNamedObj, objToNameValue, KubernetesObject } from '@dpu/jkcfg-k8s';
+  KubernetesObject,
+  objToNamedObj,
+  objToNameValue,
+} from '@dpu/jkcfg-k8s';
 import { merge } from 'lodash-es';
+import {
+  ResourceDeclaration,
+  ResourceDeclarations,
+} from '../v1alpha1/resource';
+import { resource } from './common';
+import {
+  Parameters,
+  ParameterSpec,
+  ParameterSpecs,
+  ParameterValue,
+} from './param';
+import { Task, TaskOptions, taskRef, TaskRef, taskSpec } from './task';
+import { Workspace, Workspaces } from './workspace';
 
 /**
  * Resource models
  */
-interface Pipeline extends KubernetesObject {
+export interface Pipeline extends KubernetesObject {
   spec: PipelineSpec;
 }
 
@@ -45,8 +51,8 @@ interface PipelineTaskResource {
   resource: string;
 }
 
-interface PipelineTaskOutputResource extends PipelineTaskResource {}
-interface PipelineTaskInputResource extends PipelineTaskResource {
+export interface PipelineTaskOutputResource extends PipelineTaskResource {}
+export interface PipelineTaskInputResource extends PipelineTaskResource {
   // list of other pipeline tasks the resource has to come from
   from?: string[];
 }
@@ -54,18 +60,18 @@ interface PipelineTaskInputResource extends PipelineTaskResource {
 /**
  * Object format of PipelineTaskOutputResource[] for convenience
  */
-interface PipelineTaskOutputResources {
+export interface PipelineTaskOutputResources {
   [prop: string]: Omit<PipelineTaskOutputResource, 'name'>;
 }
 
 /**
  * Object format of PipelineTaskInputResource[] for convenience
  */
-interface PipelineTaskInputResources {
+export interface PipelineTaskInputResources {
   [prop: string]: Omit<PipelineTaskInputResource, 'name'>;
 }
 
-interface PipelineTaskConditionSpec {
+export interface PipelineTaskConditionSpec {
   conditionRef: string;
   params?: ParameterValue[];
   resources?: PipelineTaskInputResource[];
@@ -74,13 +80,14 @@ interface PipelineTaskConditionSpec {
 /**
  * Object format of PipelineTaskConditionSpec for convenience
  */
-interface PipelineTaskConditions {
+export interface PipelineTaskConditions {
   [prop: string]: {
     params?: Parameters;
     resources?: PipelineTaskInputResources;
   };
 }
-interface PipelineTaskSpec {
+
+export interface PipelineTaskSpec {
   name: string;
   taskRef?: TaskRef;
   taskSpec?: Task['spec'];
@@ -98,7 +105,7 @@ interface PipelineTaskSpec {
 /**
  * Abstract internal representation of what goes into PipelineTask
  */
-interface PipelineTaskOptions {
+export interface PipelineTaskOptions {
   name: string;
   // simplify to string while keeping flexibility to use type for final interface
   taskRef?: string;
@@ -142,9 +149,23 @@ export const pipelineTask = (opts: PipelineTaskOptions): PipelineTaskSpec => {
   if (opts.retries) spec.retries = opts.retries;
   if (opts.runAfter) spec.runAfter = opts.runAfter;
 
-  spec.resources = merge({},
-    opts.resources?.inputs ? { inputs: objToNamedObj<PipelineTaskInputResource>(opts.resources.inputs) } : {},
-    opts.resources?.outputs ? { outputs: objToNamedObj<PipelineTaskOutputResource>(opts.resources.outputs) } : {})
+  spec.resources = merge(
+    {},
+    opts.resources?.inputs
+      ? {
+          inputs: objToNamedObj<PipelineTaskInputResource>(
+            opts.resources.inputs
+          ),
+        }
+      : {},
+    opts.resources?.outputs
+      ? {
+          outputs: objToNamedObj<PipelineTaskOutputResource>(
+            opts.resources.outputs
+          ),
+        }
+      : {}
+  );
 
   if (opts.params) {
     spec.params = objToNameValue(opts.params) as ParameterValue[];

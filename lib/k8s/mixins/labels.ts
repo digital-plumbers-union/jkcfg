@@ -1,8 +1,6 @@
-import { merge } from 'lodash-es';
+import { commonMetadata } from '@jkcfg/kubernetes/transform';
 import { KubernetesObject } from '../models';
 
-export const addLabels = (labels: { [prop: string]: string }) => (
-  r: KubernetesObject
-) => {
-  return merge({}, r, { metadata: labels });
-};
+export const addLabels = (labels: {
+  [prop: string]: string;
+}): ((r: KubernetesObject) => KubernetesObject) => commonMetadata({ labels });

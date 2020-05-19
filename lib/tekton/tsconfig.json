@@ -5,9 +5,9 @@
     "declarationDir": "types/"
   },
   "exclude": [
-    "dist/",
-    "node_modules/",
-    "types/"
+    "dist",
+    "node_modules",
+    "types"
   ],
   "include": [
     "**/*.ts"
