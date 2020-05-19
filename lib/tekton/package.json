@@ -1,0 +1,21 @@
+{
+  "name": "@dpu/tekton",
+  "version": "0.0.13",
+  "description": "Library for working with Tekton resources using @jkcfg",
+  "files": [
+    "dist/",
+    "types/"
+  ],
+  "types": "types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "github:digital-plumbers-union/jkcfg",
+  "license": "MIT",
+  "type": "module",
+  "module": "dist/index.js",
+  "dependencies": {
+    "lodash-es": "4.17.15",
+    "@dpu/jkcfg-k8s": "*"
+  }
+}

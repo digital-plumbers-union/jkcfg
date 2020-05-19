@@ -33,6 +33,16 @@ export interface KubernetesObject {
   spec?: any;
 }
 
+export interface NamedObj {
+  name: string;
+  [prop: string]: any;
+}
+
+export interface NameValueObj<T> {
+  name: string;
+  value: T;
+}
+
 export enum VolumeTypes {
   pvc = 'persistentVolumeClaim',
   nfs = 'nfs',
