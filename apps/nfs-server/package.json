@@ -1,7 +1,7 @@
 {
   "name": "@dpu/nfs-server",
   "description": "Kubernetes configuration for a nfs server, in @jkcfg",
-  "version": "0.0.22",
+  "version": "0.0.24",
   "files": [
     "dist/",
     "types/"
@@ -11,7 +11,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@dpu/jkcfg-k8s": "0.0.22",
+    "@dpu/jkcfg-k8s": "0.0.24",
     "@jkcfg/kubernetes": "0.6.0",
     "@jkcfg/std": "0.3.2",
     "lodash-es": "4.17.15"
