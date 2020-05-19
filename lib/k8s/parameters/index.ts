@@ -2,8 +2,6 @@ import { Boolean, Number, Object, String } from '@jkcfg/std/param';
 // separate imports due to bug in transform paths
 import { StringObject } from '../models';
 
-export const serviceAccount = (d?: string) => String('sa', d);
-
 // TODO:
 // come up with more elegant types, rather than
 // using `!` to make result of $ParameterType() NonNullable

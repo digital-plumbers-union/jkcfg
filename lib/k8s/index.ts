@@ -18,3 +18,5 @@ export * from './rbac';
 export * from './sealed-secret';
 export * from './service';
 export * from './util';
+export * from './service-account';
+export * from './secrets';

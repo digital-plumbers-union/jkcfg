@@ -1,12 +1,14 @@
 import * as k8s from '@jkcfg/kubernetes/api';
 import { StringObject } from './models';
 
-export interface Options {
+export interface IngressOptions {
   annotations?: StringObject;
   labels?: StringObject;
   hosts: Hosts;
   tls?: StringObject;
 }
+
+type Options = IngressOptions;
 
 interface BackendService {
   serviceName: string;

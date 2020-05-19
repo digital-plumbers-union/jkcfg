@@ -1,4 +1,5 @@
 import { merge } from 'lodash-es';
+import { SecretTypes } from './secrets';
 
 const apiVersion = 'bitnami.com/v1alpha1';
 const kind = 'SealedSecret';
@@ -6,7 +7,7 @@ const kind = 'SealedSecret';
 interface SealedSecretOptions {
   encryptedData: any;
   template: {
-    type?: 'string';
+    type?: SecretTypes;
     metadata?: {
       labels?: { [prop: string]: string };
       annotations?: { [prop: string]: string };
@@ -17,8 +18,7 @@ interface SealedSecretOptions {
 const defaults = {
   encryptedData: {},
   template: {
-    // todo: secret type enum
-    type: 'Opaque',
+    type: SecretTypes.opaque,
   },
 };
 
