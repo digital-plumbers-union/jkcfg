@@ -154,6 +154,7 @@ export const pipelineTask = (opts: PipelineTaskOptions): PipelineTaskSpec => {
   if (opts.taskSpec) spec.taskSpec = taskSpec(opts.taskSpec);
   if (opts.retries) spec.retries = opts.retries;
   if (opts.runAfter) spec.runAfter = opts.runAfter;
+  if (opts.workspaces) spec.workspaces = objToNamedObj(opts.workspaces);
 
   spec.resources = merge(
     {},

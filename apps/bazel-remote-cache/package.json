@@ -1,9 +1,9 @@
 {
   "name": "@dpu/bazel-remote-cache",
   "description": "Kubernetes manifests for a Bazel remote cache (https://github.com/buchgr/bazel-remote)",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "dependencies": {
-    "@dpu/jkcfg-k8s": "0.1.0",
+    "@dpu/jkcfg-k8s": "0.1.2",
     "@jkcfg/kubernetes": "0.6.0",
     "lodash-es": "4.17.15",
     "@jkcfg/std": "0.3.2"
