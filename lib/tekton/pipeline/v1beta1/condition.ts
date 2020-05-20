@@ -1,7 +1,10 @@
 import { ParameterSpecs, ParameterValue } from './param';
 import { resource } from './common';
 import { Step } from './task';
-import { ResourceDeclarations, ResourceDeclaration } from '../v1alpha1/resource';
+import {
+  ResourceDeclarations,
+  ResourceDeclaration,
+} from '../v1alpha1/resource';
 import { KubernetesObject, objToNamedObj } from '@dpu/jkcfg-k8s';
 
 export interface Condition extends KubernetesObject {

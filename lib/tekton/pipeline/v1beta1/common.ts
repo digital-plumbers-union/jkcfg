@@ -8,9 +8,5 @@ export const apiVersion = `${apiGroup}/v1beta1`;
  * @param kind
  * @param spec
  */
-export const resource = (name: string, kind: string, spec: any) => factory(
-  name,
-  kind,
-  spec,
-  apiVersion
-);
+export const resource = (name: string, kind: string, spec: any) =>
+  factory(name, kind, spec, apiVersion);

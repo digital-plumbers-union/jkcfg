@@ -1,5 +1,10 @@
 import { resource } from './common';
-import { KubernetesObject, NameValueObj, StringObject, objToNameValue } from '@dpu/jkcfg-k8s';
+import {
+  KubernetesObject,
+  NameValueObj,
+  StringObject,
+  objToNameValue,
+} from '@dpu/jkcfg-k8s';
 
 /**
  * Resource models

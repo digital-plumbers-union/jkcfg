@@ -1,10 +1,10 @@
-import { ResourceDeclarations, ResourceDeclaration } from './resource';
-import { ParameterSpecs, ParameterSpec } from './param';
-import { core } from '@jkcfg/kubernetes/api';
 import { KubernetesObject, objToNamedObj } from '@dpu/jkcfg-k8s';
-import { Workspaces, Workspace } from './workspace';
+import { core } from '@jkcfg/kubernetes/api';
+import { Step, TaskRef, taskRef } from '../v1beta1/task';
 import { resource } from './common';
-import { TaskRef, taskRef, Step } from '../v1beta1/task';
+import { ParameterSpec, ParameterSpecs } from './param';
+import { ResourceDeclaration, ResourceDeclarations } from './resource';
+import { WorkspaceDeclaration, WorkspaceDeclarations } from './workspace';
 
 export { TaskRef, taskRef, Step };
 
@@ -23,7 +23,7 @@ export interface Task extends KubernetesObject {
     inputs?: TaskInputs;
     outputs?: TaskOutputs;
     stepTemplate?: core.v1.Container;
-    workspaces?: Workspace[];
+    workspaces?: WorkspaceDeclaration[];
     sidecars?: core.v1.Container[];
   };
 }
@@ -52,7 +52,7 @@ export interface TaskOptions {
     resources?: ResourceDeclarations;
   };
   stepTemplate?: core.v1.Container;
-  workspaces?: Workspaces;
+  workspaces?: WorkspaceDeclarations;
   sidecars?: core.v1.Container[];
 }
 

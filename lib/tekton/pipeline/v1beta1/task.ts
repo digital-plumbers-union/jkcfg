@@ -1,4 +1,7 @@
-import { ResourceDeclarations, ResourceDeclaration } from '../v1alpha1/resource';
+import {
+  ResourceDeclarations,
+  ResourceDeclaration,
+} from '../v1alpha1/resource';
 import { ParameterSpecs, ParameterSpec } from './param';
 import { core } from '@jkcfg/kubernetes/api';
 import { KubernetesObject, objToNamedObj } from '@dpu/jkcfg-k8s';
@@ -22,7 +25,7 @@ export interface Task extends KubernetesObject {
     resources?: {
       inputs?: ResourceDeclaration[];
       outputs?: ResourceDeclaration[];
-    }
+    };
     stepTemplate?: core.v1.Container;
     workspaces?: WorkspaceDeclaration[];
     sidecars?: core.v1.Container[];
@@ -76,7 +79,7 @@ export interface TaskOptions {
   resources?: {
     inputs?: ResourceDeclarations;
     outputs?: ResourceDeclarations;
-  },
+  };
   params?: ParameterSpecs;
   stepTemplate?: core.v1.Container;
   workspaces?: WorkspaceDeclarations;
@@ -107,9 +110,15 @@ export const taskSpec = (opts: TaskOptions): Task['spec'] => {
   if (opts.results) spec.results = objToNamedObj(opts.results);
   if (opts.params) spec.params = objToNamedObj(opts.params);
 
-  spec.resources = merge({},
-    opts.resources?.inputs ? { inputs: objToNamedObj(opts.resources.inputs) } : {},
-    opts.resources?.outputs ? { outputs: objToNamedObj(opts.resources.outputs) } : {})
+  spec.resources = merge(
+    {},
+    opts.resources?.inputs
+      ? { inputs: objToNamedObj(opts.resources.inputs) }
+      : {},
+    opts.resources?.outputs
+      ? { outputs: objToNamedObj(opts.resources.outputs) }
+      : {}
+  );
 
   if (opts.workspaces) spec.workspaces = objToNamedObj(opts.workspaces);
 

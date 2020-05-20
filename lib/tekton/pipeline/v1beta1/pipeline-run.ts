@@ -3,7 +3,12 @@ import {
   PipelineResourceBinding,
 } from '../v1alpha1/resource';
 import { apiVersion } from './common';
-import { objToNameValue, objToNamedObj, KubernetesObject, StringObject } from '@dpu/jkcfg-k8s';
+import {
+  objToNameValue,
+  objToNamedObj,
+  KubernetesObject,
+  StringObject,
+} from '@dpu/jkcfg-k8s';
 import { core } from '@jkcfg/kubernetes/api';
 import { Parameters, ParameterValue } from './param';
 import { WorkspaceBinding, WorkspaceBindings } from './workspace';
@@ -82,7 +87,7 @@ export const pipelineRun = (
     serviceAccountName,
     serviceAccountNames,
     resources,
-    taskRunSpecs
+    taskRunSpecs,
   } = opts;
 
   const spec: PipelineRunSpec = {};

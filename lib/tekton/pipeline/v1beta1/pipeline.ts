@@ -16,7 +16,12 @@ import {
   ParameterValue,
 } from './param';
 import { Task, TaskOptions, taskRef, TaskRef, taskSpec } from './task';
-import { WorkspacePipelineDeclaration, WorkspacePipelineDeclarations, WorkspacePipelineTaskBinding, WorkspacePipelineTaskBindings } from './workspace';
+import {
+  WorkspacePipelineDeclaration,
+  WorkspacePipelineDeclarations,
+  WorkspacePipelineTaskBinding,
+  WorkspacePipelineTaskBindings,
+} from './workspace';
 
 /**
  * Resource models

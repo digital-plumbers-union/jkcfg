@@ -4,7 +4,11 @@ import { Task, TaskRef, TaskOptions } from './task';
 import { taskRef, taskSpec } from './task';
 import { WorkspaceBinding, WorkspaceBindings } from './workspace';
 import { core } from '@jkcfg/kubernetes/api';
-import { KubernetesObject, objToNamedObj, objToNameValue } from '@dpu/jkcfg-k8s';
+import {
+  KubernetesObject,
+  objToNamedObj,
+  objToNameValue,
+} from '@dpu/jkcfg-k8s';
 import { apiVersion } from './common';
 import { merge } from 'lodash-es';
 
@@ -33,7 +37,6 @@ export interface TaskRun extends KubernetesObject {
     workspaces?: WorkspaceBinding[];
   };
 }
-
 
 export interface TaskResourceBinding extends PipelineResourceBinding {
   paths?: string[];
@@ -78,9 +81,15 @@ export const taskRun = (name: string, opts: TaskRunOptions): TaskRun => {
     spec.params = objToNameValue(opts.params) as ParameterValue[];
   }
 
-  spec.resources = merge({},
-    opts.resources?.inputs ? { inputs: objToNamedObj(opts.resources.inputs) } : {},
-    opts.resources?.outputs ? { outputs: objToNamedObj(opts.resources.outputs) } : {})
+  spec.resources = merge(
+    {},
+    opts.resources?.inputs
+      ? { inputs: objToNamedObj(opts.resources.inputs) }
+      : {},
+    opts.resources?.outputs
+      ? { outputs: objToNamedObj(opts.resources.outputs) }
+      : {}
+  );
 
   return {
     apiVersion,
@@ -89,4 +98,5 @@ export const taskRun = (name: string, opts: TaskRunOptions): TaskRun => {
     spec,
   };
 };
-{}
+{
+}

@@ -1,11 +1,14 @@
-import { Parameters, ParameterValue } from './param';
-import { Task, TaskRef, TaskOptions } from './task';
-import { taskRef, taskSpec } from './task';
-import { Workspace, Workspaces } from './workspace';
+import {
+  KubernetesObject,
+  objToNamedObj,
+  objToNameValue,
+} from '@dpu/jkcfg-k8s';
 import { core } from '@jkcfg/kubernetes/api';
-import { KubernetesObject, objToNamedObj, objToNameValue } from '@dpu/jkcfg-k8s';
-import { apiVersion } from './common';
 import { TaskResourceBinding, TaskResourceBindings } from '../v1beta1/task-run';
+import { apiVersion } from './common';
+import { Parameters, ParameterValue } from './param';
+import { Task, TaskOptions, TaskRef, taskRef, taskSpec } from './task';
+import { WorkspaceBinding, WorkspaceBindings } from './workspace';
 
 /**
  * Resource models
@@ -26,7 +29,7 @@ export interface TaskRun extends KubernetesObject {
     status?: any;
     timeout?: string;
     podTemplate?: core.v1.PodSpec;
-    workspaces?: Workspace[];
+    workspaces?: WorkspaceBinding[];
   };
 }
 
@@ -56,7 +59,7 @@ export interface TaskRunOptions {
   taskSpec?: TaskOptions;
   timeout?: string;
   podTemplate?: core.v1.PodSpec;
-  workspaces?: Workspaces;
+  workspaces?: WorkspaceBindings;
 }
 
 /**

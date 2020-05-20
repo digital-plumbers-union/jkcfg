@@ -28,7 +28,7 @@ export interface WorkspaceDeclarations {
  * WorkspaceBinding maps a Task's declared workspace to a Volume.
  */
 export interface WorkspaceBinding {
-  name: string;
+  name?: string;
   subPath?: string;
   volumeClaimTemplate?: k8s.core.v1.PersistentVolumeClaim;
   persistentVolumeClaim?: k8s.core.v1.PersistentVolumeClaimVolumeSource;
@@ -46,7 +46,7 @@ export interface WorkspaceBindings {
  * with a workspace binding
  */
 export interface WorkspacePipelineDeclaration {
-  name: string;
+  name?: string;
   description?: string;
 }
 
@@ -59,7 +59,7 @@ export interface WorkspacePipelineDeclarations {
  * task's declared workspace.
  */
 export interface WorkspacePipelineTaskBinding {
-  name: string;
+  name?: string;
   workspace: string;
   subPath?: string;
 }
