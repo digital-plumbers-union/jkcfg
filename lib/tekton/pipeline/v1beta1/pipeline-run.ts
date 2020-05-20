@@ -6,7 +6,7 @@ import { apiVersion } from './common';
 import { objToNameValue, objToNamedObj, KubernetesObject, StringObject } from '@dpu/jkcfg-k8s';
 import { core } from '@jkcfg/kubernetes/api';
 import { Parameters, ParameterValue } from './param';
-import { Workspaces, Workspace } from './workspace';
+import { WorkspaceBinding, WorkspaceBindings } from './workspace';
 import { PipelineSpec, PipelineOptions } from './pipeline';
 import { pipelineSpec } from './pipeline';
 
@@ -21,7 +21,7 @@ interface PipelineRunSpec {
   resources?: PipelineResourceBinding[];
   serviceAccountName?: string;
   serviceAccountNames?: TaskServiceAccount[];
-  workspaces?: Workspace[];
+  workspaces?: WorkspaceBinding[];
   pipelineRef?: PipelineRef;
   pipelineSpec?: PipelineSpec;
   params?: ParameterValue[];
@@ -64,7 +64,7 @@ interface PipelineRunOptions {
   pipelineRef?: string;
   pipelineSpec?: PipelineOptions;
   params?: Parameters;
-  workspaces?: Workspaces;
+  workspaces?: WorkspaceBindings;
   generateName?: boolean;
   taskRunSpecs?: PipelineTaskRunSpec[];
 }

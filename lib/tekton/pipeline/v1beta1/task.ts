@@ -2,7 +2,7 @@ import { ResourceDeclarations, ResourceDeclaration } from '../v1alpha1/resource'
 import { ParameterSpecs, ParameterSpec } from './param';
 import { core } from '@jkcfg/kubernetes/api';
 import { KubernetesObject, objToNamedObj } from '@dpu/jkcfg-k8s';
-import { Workspaces, Workspace } from './workspace';
+import { WorkspaceDeclaration, WorkspaceDeclarations } from './workspace';
 import { resource } from './common';
 import { merge } from 'lodash-es';
 
@@ -24,7 +24,7 @@ export interface Task extends KubernetesObject {
       outputs?: ResourceDeclaration[];
     }
     stepTemplate?: core.v1.Container;
-    workspaces?: Workspace[];
+    workspaces?: WorkspaceDeclaration[];
     sidecars?: core.v1.Container[];
     results?: TaskResult[];
   };
@@ -79,7 +79,7 @@ export interface TaskOptions {
   },
   params?: ParameterSpecs;
   stepTemplate?: core.v1.Container;
-  workspaces?: Workspaces;
+  workspaces?: WorkspaceDeclarations;
   sidecars?: core.v1.Container[];
   results?: TaskResults;
 }

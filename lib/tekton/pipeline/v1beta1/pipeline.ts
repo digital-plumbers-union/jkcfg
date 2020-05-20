@@ -16,7 +16,7 @@ import {
   ParameterValue,
 } from './param';
 import { Task, TaskOptions, taskRef, TaskRef, taskSpec } from './task';
-import { Workspace, Workspaces } from './workspace';
+import { WorkspacePipelineDeclaration, WorkspacePipelineDeclarations, WorkspacePipelineTaskBinding, WorkspacePipelineTaskBindings } from './workspace';
 
 /**
  * Resource models
@@ -29,7 +29,7 @@ export interface PipelineSpec {
   tasks: PipelineTaskSpec[];
   resources?: ResourceDeclaration[];
   params?: ParameterSpec[];
-  workspaces?: Workspace[];
+  workspaces?: WorkspacePipelineDeclaration[];
   results?: PipelineResult[];
 }
 
@@ -99,7 +99,7 @@ export interface PipelineTaskSpec {
   conditions?: PipelineTaskConditionSpec[];
   retries?: number;
   runAfter?: string[];
-  workspaces?: Workspaces;
+  workspaces?: WorkspacePipelineTaskBinding[];
 }
 
 /**
@@ -118,6 +118,7 @@ export interface PipelineTaskOptions {
   runAfter?: string[];
   retries?: number;
   conditions?: PipelineTaskConditions;
+  workspaces?: WorkspacePipelineTaskBindings;
 }
 
 export interface PipelineOptions {
@@ -128,7 +129,7 @@ export interface PipelineOptions {
    */
   resources?: ResourceDeclarations;
   params?: ParameterSpecs;
-  workspaces?: Workspaces;
+  workspaces?: WorkspacePipelineDeclarations;
   results?: PipelineResults;
 }
 

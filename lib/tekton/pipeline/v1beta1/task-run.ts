@@ -2,7 +2,7 @@ import { Parameters, ParameterValue } from './param';
 import { PipelineResourceBinding } from '../v1alpha1/resource';
 import { Task, TaskRef, TaskOptions } from './task';
 import { taskRef, taskSpec } from './task';
-import { Workspace, Workspaces } from './workspace';
+import { WorkspaceBinding, WorkspaceBindings } from './workspace';
 import { core } from '@jkcfg/kubernetes/api';
 import { KubernetesObject, objToNamedObj, objToNameValue } from '@dpu/jkcfg-k8s';
 import { apiVersion } from './common';
@@ -30,7 +30,7 @@ export interface TaskRun extends KubernetesObject {
     status?: any;
     timeout?: string;
     podTemplate?: core.v1.PodSpec;
-    workspaces?: Workspace[];
+    workspaces?: WorkspaceBinding[];
   };
 }
 
@@ -58,7 +58,7 @@ export interface TaskRunOptions {
   taskSpec?: TaskOptions;
   timeout?: string;
   podTemplate?: core.v1.PodSpec;
-  workspaces?: Workspaces;
+  workspaces?: WorkspaceBindings;
 }
 
 /**
