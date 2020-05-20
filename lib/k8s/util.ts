@@ -1,6 +1,6 @@
 import * as k8s from '@jkcfg/kubernetes/api';
 import { commonMetadata } from '@jkcfg/kubernetes/transform';
-import { KubernetesObject, StringObject, NamedObj } from './models';
+import { KubernetesObject, NamedObj, StringObject } from './models';
 
 interface CommonMetadata {
   labels?: null | StringObject;
@@ -17,14 +17,13 @@ interface CommonMetadata {
 export const finalize = (
   resources: KubernetesObject[],
   meta: CommonMetadata = { labels: null, annotations: null, namespace: null }
-) =>
-  resources
-    .map(commonMetadata(meta))
-    .concat(
-      meta.namespace === 'default'
-        ? []
-        : new k8s.core.v1.Namespace(meta.namespace!)
-    );
+): KubernetesObject[] =>
+  resources.map(commonMetadata(meta)).concat(
+    meta.namespace === 'default'
+      ? []
+      : new k8s.core.v1.Namespace(meta.namespace!)
+    // TODO: why do I need to cast this now?
+  ) as KubernetesObject[];
 
 /**
  * Easily turn objects into arrays where the original key name is now `name:`

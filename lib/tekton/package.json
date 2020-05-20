@@ -1,6 +1,6 @@
 {
   "name": "@dpu/tekton",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "Library for working with Tekton resources using @jkcfg",
   "files": [
     "dist/",
@@ -16,6 +16,6 @@
   "module": "dist/index.js",
   "dependencies": {
     "lodash-es": "4.17.15",
-    "@dpu/jkcfg-k8s": "0.1.2"
+    "@dpu/jkcfg-k8s": "0.1.4"
   }
 }

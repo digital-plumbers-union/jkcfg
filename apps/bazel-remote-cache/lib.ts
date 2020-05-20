@@ -17,7 +17,7 @@ const htpasswdMountDir = '/secrets';
 const htpasswdPath = `${htpasswdMountDir}/.htpasswd`;
 const cacheMount = '/data';
 
-const bzlremcache = (p?: Partial<typeof params>) => {
+const bzlremcache = (p?: Partial<typeof params>): KubernetesObject[] => {
   const {
     name,
     namespace,

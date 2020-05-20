@@ -1,7 +1,7 @@
 {
   "name": "@dpu/syncthing",
   "description": "Kubernetes manifests for syncthing in jkcfg.",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "files": [
     "dist/",
     "types/"
@@ -16,7 +16,7 @@
   "module": "dist/index.js",
   "dependencies": {
     "lodash-es": "4.17.15",
-    "@dpu/jkcfg-k8s": "0.1.2",
+    "@dpu/jkcfg-k8s": "0.1.4",
     "@jkcfg/kubernetes": "0.6.0",
     "@jkcfg/std": "0.3.2"
   }
