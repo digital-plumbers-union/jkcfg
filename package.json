@@ -1,6 +1,6 @@
 {
   "name": "jkcfg",
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "jkcfg (https://github.com/jkcfg) TypeScript monorepo",
   "repository": "https://github.com/dpu/jkcfg.git",
   "author": "side.weidner@gmail.com",
