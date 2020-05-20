@@ -1,4 +1,3 @@
-import { V1ObjectMeta } from '@kubernetes/client-node';
 import { merge } from 'lodash-es';
 import { SecretTypes } from './secrets';
 
@@ -23,6 +22,10 @@ export enum SealedSecretAnnotations {
   namespaceWide = 'sealedsecrets.bitnami.com/namespace-wide',
 }
 
+export const annotate = (anno: SealedSecretAnnotations) => {
+  return { [anno]: 'true' };
+};
+
 const defaults = {
   encryptedData: {},
   template: {
@@ -33,19 +36,16 @@ const defaults = {
 // TODO: have secret inherit labels of sealedsecret regardless
 export const sealedSecret = (name: string, opts: SealedSecretOptions) => {
   const { encryptedData, template } = merge({}, defaults, opts);
-  const metadata: V1ObjectMeta = { name };
-
-  if (opts.clusterWide) {
-    metadata.annotations = {
-      [SealedSecretAnnotations.clusterWide]: 'true',
-    };
-  }
-
-  if (opts.namespaceWide) {
-    metadata.annotations = {
-      [SealedSecretAnnotations.namespaceWide]: 'true',
-    };
-  }
+  const metadata = merge(
+    {},
+    { name },
+    opts.clusterWide
+      ? { annotations: annotate(SealedSecretAnnotations.clusterWide) }
+      : {},
+    opts.namespaceWide
+      ? { annotations: annotate(SealedSecretAnnotations.namespaceWide) }
+      : {}
+  );
 
   return {
     kind,
