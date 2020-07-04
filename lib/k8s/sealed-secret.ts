@@ -6,7 +6,7 @@ const kind = 'SealedSecret';
 
 interface SealedSecretOptions {
   encryptedData: any;
-  template: {
+  template?: {
     type?: SecretTypes;
     metadata?: {
       labels?: { [prop: string]: string };
@@ -35,7 +35,18 @@ const defaults = {
 
 // TODO: have secret inherit labels of sealedsecret regardless
 export const sealedSecret = (name: string, opts: SealedSecretOptions) => {
-  const { encryptedData, template } = merge({}, defaults, opts);
+  const { encryptedData, template, namespaceWide, clusterWide } = merge(
+    {},
+    defaults,
+    opts
+  );
+
+  if (namespaceWide && clusterWide) {
+    throw new Error(
+      'A SealedSecret can not have both namespace and cluster-wide scope'
+    );
+  }
+
   const metadata = merge(
     {},
     { name },
