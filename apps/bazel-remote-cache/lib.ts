@@ -11,13 +11,13 @@ import {
 } from '@dpu/jkcfg-k8s';
 import * as k8s from '@jkcfg/kubernetes/api';
 import { isUndefined, merge } from 'lodash-es';
-import { params } from './params';
+import { Parameters, params } from './params';
 
 const htpasswdMountDir = '/secrets';
 const htpasswdPath = `${htpasswdMountDir}/.htpasswd`;
 const cacheMount = '/data';
 
-const bzlremcache = (p?: Partial<typeof params>): KubernetesObject[] => {
+const bzlremcache = (p?: Partial<Parameters>): KubernetesObject[] => {
   const {
     name,
     namespace,

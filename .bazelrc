@@ -1,0 +1,18 @@
+# output full test results to command line
+test --test_output all
+coverage --test_output all
+
+# CI SPECIFIC FLAGS
+#
+# output sandbox debugging information
+# print verbose failures
+build:ci --sandbox_debug --verbose_failures
+run:ci --sandbox_debug --verbose_failures
+test:ci --sandbox_debug --verbose_failures
+# increase test timeouts in CI
+test:ci --test_timeout=600
+# retry all tests at least 3x in CI so we dont have to mark flaky
+test:ci --flaky_test_attempts=3
+# try to import the ci cache auth flags
+try-import .ci-cache-bazelrc
+

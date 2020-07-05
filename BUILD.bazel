@@ -1,0 +1,22 @@
+load("@com_github_bazelbuild_buildtools//buildifier:def.bzl", "buildifier")
+
+# export tsconfig.json so it can be used by ts_* rules in all packages
+# export package.json so it can be used by tests and ts_* rules
+exports_files(
+    [
+        "tsconfig.json",
+        "package.json",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+# BUILD file linter/formatter
+buildifier(
+    name = "buildifier",
+)
+
+# invoke buildifier in check mode to fail during CI
+buildifier(
+    name = "buildifier-check",
+    mode = "check",
+)

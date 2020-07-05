@@ -19,5 +19,5 @@
   "repository": "github:digital-plumbers-union/jkcfg",
   "license": "MIT",
   "type": "module",
-  "module": "dist/index.js"
+  "module": "dist/index.mjs"
 }

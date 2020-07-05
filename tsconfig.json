@@ -15,12 +15,20 @@
     "noUnusedParameters": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "resolveJsonModule": true,
     "declaration": true,
     "sourceMap": true,
     "module": "es6",
     "baseUrl": ".",
     "noImplicitAny": false,
-    "strictNullChecks": true
-  }
+    "strictNullChecks": true,
+    "paths": {
+      "dpu_jkcfg/*": ["*"]
+    },  
+  },
+  "exclude": [
+    "node_modules/",
+    "bazel-bin/",
+    "bazel-out/",
+    "bazel-jkcfg/"
+  ]
 }

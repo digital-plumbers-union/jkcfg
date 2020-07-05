@@ -2,7 +2,7 @@
   "name": "jkcfg",
   "version": "0.1.4",
   "description": "jkcfg (https://github.com/jkcfg) TypeScript monorepo",
-  "repository": "https://github.com/dpu/jkcfg.git",
+  "repository": "https://github.com/digital-plumbers-union/jkcfg.git",
   "author": "side.weidner@gmail.com",
   "license": "MIT",
   "private": true,
@@ -12,12 +12,12 @@
   ],
   "devDependencies": {
     "@types/dependency-tree": "7.2.0",
-    "@types/fs-extra": "8.1.0",
+    "@types/fs-extra": "9.0.1",
     "@types/lodash-es": "4.17.3",
     "@types/node": "12",
     "@types/signale": "1.2.1",
     "dependency-tree": "7.2.1",
-    "fs-extra": "9.0.0",
+    "fs-extra": "9.0.1",
     "lodash": "4.17.15",
     "prettier": "1.19.1",
     "read-pkg-up": "7.0.1",
@@ -30,10 +30,10 @@
     "workspaces-run": "1.0.1"
   },
   "dependencies": {
+    "@bazel/typescript": "1.7.0",
     "@jkcfg/kubernetes": "0.6.0",
     "@jkcfg/std": "0.3.2",
     "@kubernetes/client-node": "0.11.0",
-    "immer": "6.0.3",
     "lodash-es": "4.17.15"
   },
   "prettier": {
