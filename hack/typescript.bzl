@@ -19,7 +19,7 @@ def ts_library(name, srcs, deps, tsconfig = "//:tsconfig.json"):
         devmode_target = "es2017",
         prodmode_module = "es2015",
         prodmode_target = "es2017",
-        tsconfig = tsconfig
+        tsconfig = tsconfig,
     )
 
 def package_json(pkg_json):
@@ -93,4 +93,3 @@ def lib(label, name = "lib", srcs = [], deps = [], tsconfig = "//:tsconfig.json"
             label = label,
         ),
     ] + dependencies(label + ":package.json") + package_json(label + ":package.json")
-

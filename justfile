@@ -1,6 +1,9 @@
 build:
   bazel build //...
 
+fix:
+  bazel run //:buildifier
+
 clean:
   rm -rf node_modules
   bazel clean --expunge
