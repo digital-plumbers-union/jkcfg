@@ -2,4 +2,7 @@ node_modules/
 *.log
 types/
 dist/
-bazel-*
+bazel-bin
+bazel-testlogs
+bazel-out
+bazel-jkcfg
