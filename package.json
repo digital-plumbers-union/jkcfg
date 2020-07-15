@@ -1,6 +1,6 @@
 {
   "name": "jkcfg",
-  "version": "0.1.4",
+  "version": "0.0.0",
   "description": "jkcfg (https://github.com/jkcfg) TypeScript monorepo",
   "repository": "https://github.com/digital-plumbers-union/jkcfg.git",
   "author": "side.weidner@gmail.com",
@@ -10,31 +10,23 @@
     "lib/*",
     "apps/*"
   ],
-  "devDependencies": {
-    "@types/dependency-tree": "7.2.0",
-    "@types/fs-extra": "9.0.1",
-    "@types/lodash-es": "4.17.3",
-    "@types/node": "12",
-    "@types/signale": "1.2.1",
-    "dependency-tree": "7.2.1",
-    "fs-extra": "9.0.1",
-    "lodash": "4.17.15",
-    "prettier": "1.19.1",
-    "read-pkg-up": "7.0.1",
-    "signale": "1.4.0",
-    "ts-node": "8.6.1",
-    "tslint": "5.20.1",
-    "tslint-config-prettier": "1.18.0",
-    "tslint-microsoft-contrib": "6.2.0",
-    "typescript": "3.8.2",
-    "workspaces-run": "1.0.1"
-  },
   "dependencies": {
     "@bazel/typescript": "1.7.0",
     "@jkcfg/kubernetes": "0.6.0",
     "@jkcfg/std": "0.3.2",
     "@kubernetes/client-node": "0.11.0",
-    "lodash-es": "4.17.15"
+    "@types/fs-extra": "9.0.1",
+    "@types/lodash-es": "4.17.3",
+    "@types/node": "12",
+    "@types/signale": "1.2.1",
+    "fs-extra": "9.0.1",
+    "lodash-es": "4.17.15",
+    "prettier": "1.19.1",
+    "signale": "1.4.0",
+    "tslint": "5.20.1",
+    "tslint-config-prettier": "1.18.0",
+    "tslint-microsoft-contrib": "6.2.0",
+    "typescript": "3.8.2"
   },
   "prettier": {
     "singleQuote": true,
