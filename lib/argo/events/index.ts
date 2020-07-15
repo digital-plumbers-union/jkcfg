@@ -176,7 +176,7 @@ export namespace eventbus {
       * @param desc The description to use to populate this object properties.
       */
       constructor(name: string, desc: eventbus.v1alpha1.EventBus) {
-          this.apiVersion = "eventbus/v1alpha1";
+          this.apiVersion = "argoproj.io/v1alpha1";
           this.kind = "EventBus";
           this.metadata = Object.assign({}, desc && desc.metadata || {}, { name });
           this.spec = desc.spec;
@@ -218,7 +218,7 @@ export namespace eventbus {
       * @param desc The description to use to populate this object properties.
       */
       constructor(name: string, desc: eventbus.v1alpha1.EventBusList) {
-          this.apiVersion = "eventbus/v1alpha1";
+          this.apiVersion = "argoproj.io/v1alpha1";
           this.items = desc.items;
           this.kind = "EventBusList";
           this.metadata = Object.assign({}, desc && desc.metadata || {}, { name });
@@ -528,7 +528,7 @@ export namespace eventsource {
       * @param desc The description to use to populate this object properties.
       */
       constructor(name: string, desc: eventsource.v1alpha1.EventSource) {
-          this.apiVersion = "eventsource/v1alpha1";
+          this.apiVersion = "argoproj.io/v1alpha1";
           this.kind = "EventSource";
           this.metadata = Object.assign({}, desc && desc.metadata || {}, { name });
           this.spec = desc.spec;
@@ -570,7 +570,7 @@ export namespace eventsource {
       * @param desc The description to use to populate this object properties.
       */
       constructor(name: string, desc: eventsource.v1alpha1.EventSourceList) {
-          this.apiVersion = "eventsource/v1alpha1";
+          this.apiVersion = "argoproj.io/v1alpha1";
           this.items = desc.items;
           this.kind = "EventSourceList";
           this.metadata = Object.assign({}, desc && desc.metadata || {}, { name });
@@ -2383,7 +2383,7 @@ export namespace sensor {
       * @param desc The description to use to populate this object properties.
       */
       constructor(name: string, desc: sensor.v1alpha1.Sensor) {
-          this.apiVersion = "sensor/v1alpha1";
+          this.apiVersion = "argoproj.io/v1alpha1";
           this.kind = "Sensor";
           this.metadata = Object.assign({}, desc && desc.metadata || {}, { name });
           this.spec = desc.spec;
@@ -2425,7 +2425,7 @@ export namespace sensor {
       * @param desc The description to use to populate this object properties.
       */
       constructor(name: string, desc: sensor.v1alpha1.SensorList) {
-          this.apiVersion = "sensor/v1alpha1";
+          this.apiVersion = "argoproj.io/v1alpha1";
           this.items = desc.items;
           this.kind = "SensorList";
           this.metadata = Object.assign({}, desc && desc.metadata || {}, { name });
