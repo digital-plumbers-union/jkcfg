@@ -2,7 +2,17 @@ import { rootPkg } from 'dpu_jkcfg/hack/lib';
 import { outputJSON, readJSON } from 'fs-extra';
 import signale from 'signale';
 
-async (workspacePkgPath: string = process.argv[2]) => {
+const pkgDepsWithVersions = (repoDeps: any, pkgDeps: any) => {
+  const result: { [prop: string]: string } = Object.assign({}, pkgDeps);
+  for (const dep in pkgDeps) {
+    if (repoDeps[dep]) {
+      result[dep] = repoDeps[dep];
+    }
+  }
+  return result;
+};
+
+(async (workspacePkgPath: string = process.argv[2]) => {
   const source = await rootPkg();
   const workspace = await readJSON(workspacePkgPath);
 
@@ -19,14 +29,6 @@ async (workspacePkgPath: string = process.argv[2]) => {
     workspace.dependencies
   );
 
-  await outputJSON(workspacePkgPath, workspace);
+  await outputJSON(workspacePkgPath, workspace, { spaces: 2 });
   signale.success(`dependencies updated for ${workspace.name}`);
-};
-
-const pkgDepsWithVersions = (repoDeps: any, pkgDeps: any) => {
-  const result: { [prop: string]: string } = {};
-  for (const dep of pkgDeps) {
-    result[dep] = repoDeps[dep];
-  }
-  return result;
-};
+})();

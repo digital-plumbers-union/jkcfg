@@ -14,7 +14,7 @@ export function assertKubeObjArray(
   if (!isArray(val)) {
     throw new Error(`${val} is expected to be an array`);
   }
-  val.map(assertKubeObj);
+  val.forEach(assertKubeObj);
 }
 
 export function assertEnvFromSource(

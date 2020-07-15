@@ -7,8 +7,8 @@ ts_library(
     srcs = ["index.ts"],
     runtime = "nodejs",
     deps = [
-      "@npm//@types/node",
-      "@npm//@types/fs-extra",
-      "@npm//fs-extra"
+        "@npm//@types/fs-extra",
+        "@npm//@types/node",
+        "@npm//fs-extra",
     ],
 )

@@ -65,8 +65,8 @@ protobuf_deps()
 # - protobuf
 http_archive(
     name = "com_github_bazelbuild_buildtools",
-    strip_prefix = "buildtools-master",
     sha256 = "6db4fdd100737f9a3c14205ebd1d210e7149543921feb779b7edd50fd45868a6",
+    strip_prefix = "buildtools-master",
     url = "https://github.com/bazelbuild/buildtools/archive/master.zip",
 )
 

@@ -1,6 +1,9 @@
-import { resource, apiGroup } from './common';
+import { configViewerRule, role, roleBinding, roleRef } from '@dpu/jkcfg-k8s';
+import * as api from '@jkcfg/kubernetes/api';
+// TODO: update to latest version of @jkcfg/kubernetes and reconcile
+//       shapes vs api
 import { rbac } from '@jkcfg/kubernetes/shapes';
-import { role, configViewerRule, roleBinding, roleRef } from '@dpu/jkcfg-k8s';
+import { apiGroup, resource } from './common';
 
 export interface EventListenerOptions {
   serviceAccount: string;
@@ -37,7 +40,7 @@ export const eventListener = (name: string, opts: EventListenerOptions) => {
 export const eventListenerRBAC = (
   name: string,
   subjects: rbac.v1.Subject[]
-) => [
+): (api.rbac.v1.Role | api.rbac.v1.RoleBinding)[] => [
   role(name, [
     configViewerRule,
     {

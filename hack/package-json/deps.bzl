@@ -4,4 +4,5 @@ deps = [
     "@npm//@types/fs-extra",
     "@npm//signale",
     "@npm//fs-extra",
+    "@npm//@types/node",
 ]

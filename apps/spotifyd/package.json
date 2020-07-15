@@ -1,17 +1,10 @@
 {
   "name": "@dpu/spotifyd",
   "description": "Generate spotifyd installation manifests for Kubernetes using jkcfg",
-  "version": "0.1.4",
-  "files": [
-    "dist/",
-    "types/"
-  ],
-  "types": "types/index.d.ts",
-  "publishConfig": {
-    "access": "public"
-  },
+  "version": "0.0.0-PLACEHOLDER",
+  "types": "index.d.ts",
   "dependencies": {
-    "@dpu/jkcfg-k8s": "0.1.4",
+    "@dpu/jkcfg-k8s": "0.0.0-PLACEHOLDER",
     "@jkcfg/kubernetes": "0.6.0",
     "@jkcfg/std": "0.3.2",
     "lodash-es": "4.17.15"
@@ -19,5 +12,5 @@
   "repository": "github:digital-plumbers-union/jkcfg",
   "license": "MIT",
   "type": "module",
-  "module": "dist/index.js"
+  "module": "index.js"
 }

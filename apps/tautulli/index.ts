@@ -12,7 +12,7 @@ import {
   PVC,
   svcPort,
 } from '@dpu/jkcfg-k8s';
-import { addNamespace } from '@dpu/jkcfg-k8s/dist/mixins/namespace';
+import { addNamespace } from '@dpu/jkcfg-k8s/mixins/namespace';
 import * as k8s from '@jkcfg/kubernetes/api';
 import { String } from '@jkcfg/std/param';
 import { isUndefined, merge } from 'lodash-es';
