@@ -17,4 +17,4 @@ test:ci --flaky_test_attempts=3
 try-import .ci-cache-bazelrc
 
 # RELEASE STUFF
-build:release --stamp --workspace_status_command=./hack/release/bazel-variables.sh
+build:release --stamp --workspace_status_command=./hack/release-variables.sh
