@@ -3,7 +3,7 @@ load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary", "nodejs_test", "p
 load("//hack/deps:deps.bzl", deps_deps = "deps")
 load("//hack/package-json:deps.bzl", pkg_json_deps = "deps")
 
-def ts_library(name, srcs, deps):
+def ts_library(name, srcs, deps, tsconfig = "//:tsconfig.json"):
     """Minimum ts_library target that works with jkcfg"""
     return _ts_library(
         name = name,
@@ -19,6 +19,7 @@ def ts_library(name, srcs, deps):
         devmode_target = "es2017",
         prodmode_module = "es2015",
         prodmode_target = "es2017",
+        tsconfig = tsconfig
     )
 
 def package_json(pkg_json):
@@ -40,7 +41,7 @@ def package_json(pkg_json):
     ]
 
 def dependencies(pkg_json):
-    """Ensures that the package dependencies match the versions in the base 
+    """Ensures that the package dependencies match the versions in the base
        package.json"""
     return [
         nodejs_test(
@@ -82,13 +83,14 @@ def app(label, name = "app", srcs = ["index.ts", "lib.ts", "params.ts"], deps = 
         ),
     ] + dependencies(label + ":package.json") + package_json(label + ":package.json")
 
-def lib(label, name = "lib", srcs = [], deps = []):
+def lib(label, name = "lib", srcs = [], deps = [], tsconfig = "//:tsconfig.json"):
     """Creates required targets for building and publishing libraries for jkcfg to
     npm"""
     return [
-        ts_library(name, srcs, deps),
+        ts_library(name, srcs, deps, tsconfig),
         npm(
             name = name,
             label = label,
         ),
     ] + dependencies(label + ":package.json") + package_json(label + ":package.json")
+

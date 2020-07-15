@@ -1,0 +1,12 @@
+{
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": {
+    "strict": false,
+  },
+  "exclude": [
+    "node_modules/",
+    "bazel-bin/",
+    "bazel-out/",
+    "bazel-jkcfg/"
+  ]
+}

@@ -1,9 +1,13 @@
-hack script +ARGS='': 
-  yarn ts-node --script-mode hack/{{script}} {{ARGS}}
+build:
+  bazel build //...
 
-release version:
+clean:
+  rm -rf node_modules
+  bazel clean --expunge
+
+release version tag="next":
   #!/bin/bash
-  just hack build.ts
-  yarn version --new-version {{version}}
-  just hack pkgjson.ts
-  yarn workspaces run publish --new-version {{version}}
+  git tag {{version}}
+  hack/release.sh publish {{tag}}
+  git push origin {{tag}}
+

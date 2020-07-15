@@ -23,7 +23,7 @@
     "strictNullChecks": true,
     "paths": {
       "dpu_jkcfg/*": ["*"]
-    },  
+    },
   },
   "exclude": [
     "node_modules/",

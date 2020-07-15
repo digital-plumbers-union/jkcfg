@@ -1,0 +1,14 @@
+{
+  "name": "@dpu/argo-events",
+  "version": "0.0.0-PLACEHOLDER",
+  "description": "Library for working with Argo Events resources using @jkcfg",
+  "types": "index.d.ts",
+  "repository": "github:digital-plumbers-union/jkcfg",
+  "license": "MIT",
+  "type": "module",
+  "module": "index.js",
+  "dependencies": {
+    "@jkcfg/kubernetes": "0.6.0",
+    "@dpu/jkcfg-k8s": "0.0.0-PLACEHOLDER"
+  }
+}
