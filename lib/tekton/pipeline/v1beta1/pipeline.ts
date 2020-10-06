@@ -9,7 +9,6 @@ import {
   ResourceDeclarations,
 } from '../v1alpha1/resource';
 import { resource } from './common';
-import { ConditionSpec } from './condition';
 import {
   Parameters,
   ParameterSpec,
