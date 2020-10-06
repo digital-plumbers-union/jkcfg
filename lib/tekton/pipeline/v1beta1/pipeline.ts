@@ -9,6 +9,7 @@ import {
   ResourceDeclarations,
 } from '../v1alpha1/resource';
 import { resource } from './common';
+import { ConditionSpec } from './condition';
 import {
   Parameters,
   ParameterSpec,
@@ -179,9 +180,16 @@ export const pipelineTask = (opts: PipelineTaskOptions): PipelineTaskSpec => {
   }
 
   if (opts.conditions) {
-    spec.conditions = Object.keys(spec.conditions!).map(key => ({
-      conditionRef: key, ...spec.conditions![key]
-    }))
+    spec.conditions = Object.keys(opts.conditions!).map(key => {
+      const condition: PipelineTaskConditionSpec = { conditionRef: key };
+      if (opts.conditions![key].params) {
+        condition.params = objToNameValue(opts.conditions![key].params!) as ParameterValue[]
+      }
+      if (opts.conditions![key].resources) {
+        condition.resources = objToNamedObj(opts.conditions![key].resources!)
+      }
+      return condition;
+    });
   }
 
   return spec;
