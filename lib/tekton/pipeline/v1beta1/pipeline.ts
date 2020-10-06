@@ -179,8 +179,9 @@ export const pipelineTask = (opts: PipelineTaskOptions): PipelineTaskSpec => {
   }
 
   if (opts.conditions) {
-    spec.conditions = (objToNamedObj(
-      opts.conditions
+    spec.conditions = (objToNameValue(
+      opts.conditions,
+      'conditionRef',
     ) as unknown) as PipelineTaskConditionSpec[];
   }
 
