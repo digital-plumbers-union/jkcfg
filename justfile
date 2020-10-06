@@ -10,6 +10,7 @@ clean:
 
 release version tag="next":
   #!/bin/bash
+  set -e
   git tag {{version}}
   hack/release.sh publish {{tag}}
   git push origin {{version}}
