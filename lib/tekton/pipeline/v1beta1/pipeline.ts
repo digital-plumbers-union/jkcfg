@@ -179,10 +179,9 @@ export const pipelineTask = (opts: PipelineTaskOptions): PipelineTaskSpec => {
   }
 
   if (opts.conditions) {
-    spec.conditions = (objToNameValue(
-      opts.conditions,
-      'conditionRef',
-    ) as unknown) as PipelineTaskConditionSpec[];
+    spec.conditions = Object.keys(spec.conditions!).map(key => ({
+      conditionRef: key, ...spec.conditions![key]
+    }))
   }
 
   return spec;
