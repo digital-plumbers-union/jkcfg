@@ -15,8 +15,8 @@ export interface Parameters {
   namespace: string;
   image: string;
   port: number;
-  ingress: IngressParameter;
-  persistence: PersistenceParameter;
+  ingress: Partial<IngressParameter>;
+  persistence: Partial<PersistenceParameter>;
   sealedSecrets: boolean;
   secrets: Partial<{
     walletPass: string;

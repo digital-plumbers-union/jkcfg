@@ -17,8 +17,8 @@ export interface Parameters {
   maxSize: number;
   port: number;
   htpasswd: string | undefined;
-  ingress: IngressParameter;
-  persistence: PersistenceParameter;
+  ingress: Partial<IngressParameter>;
+  persistence: Partial<PersistenceParameter>;
 }
 
 // Directly based on https://github.com/buchgr/bazel-remote#command-line-flags

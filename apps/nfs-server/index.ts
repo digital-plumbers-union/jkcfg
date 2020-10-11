@@ -1,34 +1,16 @@
 import {
-  App,
   appNameSelector,
   Container,
   Deployment,
-  image,
-  name,
-  namespace,
-  port,
+  finalize,
   svcPort,
   VolumeTypes,
 } from '@dpu/jkcfg-k8s';
-import { addNamespace } from '@dpu/jkcfg-k8s/mixins/namespace';
 import * as k8s from '@jkcfg/kubernetes/api';
-import { Number, Object, String } from '@jkcfg/std/param';
 import { merge } from 'lodash-es';
+import { Parameters, params } from './params';
 
-export const params = {
-  name: name('nfs-server'),
-  namespace: namespace('default'),
-  image: image('itsthenetwork/nfs-server-alpine:latest-arm'),
-  clusterIP: String('clusterIP', '10.43.217.217')!,
-  port: port(2049),
-  servicePort: Number('servicePort'),
-  serviceType: String('serviceType', 'LoadBalancer')!,
-  hostPath: String('hostPath'),
-  nodeSelector: Object('nodeSelector', {}),
-  replicas: Number('replicas', 1)!,
-};
-
-const nfsServer = (p: Partial<typeof params>) => {
+const nfsServer = (p?: Parameters) => {
   const {
     name,
     namespace,
@@ -41,7 +23,6 @@ const nfsServer = (p: Partial<typeof params>) => {
     serviceType,
     replicas,
   } = merge({}, params, p);
-  const app = App(name);
   const selector = appNameSelector(name);
 
   const svc = new k8s.core.v1.Service(name, {
@@ -89,13 +70,7 @@ const nfsServer = (p: Partial<typeof params>) => {
     };
   }
 
-  app.add([svc, deploy.deployment].map(addNamespace(namespace)));
-
-  if (namespace !== 'default') {
-    app.add(new k8s.core.v1.Namespace(namespace));
-  }
-
-  return app.resources;
+  return finalize([svc, deploy.resource], { labels: selector, namespace });
 };
 
 export default nfsServer;

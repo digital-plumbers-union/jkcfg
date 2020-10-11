@@ -9,15 +9,19 @@ import {
   svcPort,
   VolumeTypes,
 } from '@dpu/jkcfg-k8s';
+import {
+  AssertIngressParameter,
+  AssertPersistenceParameter,
+} from '@dpu/jkcfg-k8s/parameters';
 import * as k8s from '@jkcfg/kubernetes/api';
-import { isUndefined, merge } from 'lodash-es';
+import { merge } from 'lodash-es';
 import { Parameters, params } from './params';
 
 const htpasswdMountDir = '/secrets';
 const htpasswdPath = `${htpasswdMountDir}/.htpasswd`;
 const cacheMount = '/data';
 
-const bzlremcache = (p?: Partial<Parameters>): KubernetesObject[] => {
+export const bzlremcache = (p?: Partial<Parameters>): KubernetesObject[] => {
   const {
     name,
     namespace,
@@ -29,11 +33,14 @@ const bzlremcache = (p?: Partial<Parameters>): KubernetesObject[] => {
     maxSize,
   } = merge({}, params, p || {});
 
+  // assert required settings/parameters
+  AssertPersistenceParameter(persistence);
+
   const selector = appNameSelector(name);
 
   const pvc = PVC(name, {
-    size: persistence.size!,
-    storageClass: persistence.storageClass!,
+    size: persistence.size,
+    storageClass: persistence.storageClass,
   });
 
   const svc = new k8s.core.v1.Service(name, {
@@ -84,11 +91,8 @@ const bzlremcache = (p?: Partial<Parameters>): KubernetesObject[] => {
 
   // ingress
   if (ingress.enabled) {
+    AssertIngressParameter(ingress);
     const { annotations, host, tls } = ingress;
-    // TODO: make this a function
-    if (isUndefined(host)) {
-      throw new Error('Host must be set if ingress.enabled is true');
-    }
     const ing = new k8s.extensions.v1beta1.Ingress(name, {
       metadata: { annotations },
       spec: {
@@ -116,5 +120,3 @@ const bzlremcache = (p?: Partial<Parameters>): KubernetesObject[] => {
 
   return finalize(resources, { labels: selector, namespace });
 };
-
-export { bzlremcache };
