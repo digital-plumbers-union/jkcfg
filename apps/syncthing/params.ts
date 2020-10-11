@@ -26,7 +26,7 @@ export interface Parameters {
   serviceType: string;
 }
 
-export const params: Partial<Parameters> = {
+export const params: Parameters = {
   name: Name('syncthing'),
   namespace: Namespace('syncthing'),
   persistence: Persistence('500Gi'),

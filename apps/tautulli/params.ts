@@ -20,7 +20,7 @@ export interface Parameters {
   timezone: string;
 }
 
-export const params: Partial<Parameters> = {
+export const params: Parameters = {
   name: Name('tautulli'),
   namespace: Namespace('tautulli'),
   persistence: Persistence('1Gi'),
