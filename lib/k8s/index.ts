@@ -1,4 +1,3 @@
-export * from './app';
 export * from './assertions';
 export * from './cert-manager-annotations';
 export * from './cluster-issuer';
@@ -7,8 +6,6 @@ export * from './deployment';
 export * from './ingress';
 export * from './label-selectors';
 export * from './labels';
-export * from './mixins/labels';
-export * from './mixins/namespace';
 export * from './models';
 export * from './pod';
 export * from './pvc';
