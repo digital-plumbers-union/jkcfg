@@ -21,7 +21,7 @@ const htpasswdMountDir = '/secrets';
 const htpasswdPath = `${htpasswdMountDir}/.htpasswd`;
 const cacheMount = '/data';
 
-const bzlremcache = (p?: Partial<Parameters>): KubernetesObject[] => {
+const BazelRemoteCache = (p?: Partial<Parameters>): KubernetesObject[] => {
   const {
     name,
     namespace,
@@ -121,4 +121,4 @@ const bzlremcache = (p?: Partial<Parameters>): KubernetesObject[] => {
   return finalize(resources, { labels: selector, namespace });
 };
 
-export default bzlremcache;
+export { BazelRemoteCache };
