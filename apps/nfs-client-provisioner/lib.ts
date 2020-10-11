@@ -67,4 +67,4 @@ const storageClass = (name: string, provisioner: string) => ({
   },
 });
 
-export default NfsClientProvisioner;
+export { NfsClientProvisioner };
