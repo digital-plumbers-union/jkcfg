@@ -74,4 +74,4 @@ const NfsServer = (p?: Partial<Parameters>): KubernetesObject[] => {
   return finalize([svc, deploy.resource], { labels: selector, namespace });
 };
 
-export default NfsServer;
+export { NfsServer };
