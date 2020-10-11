@@ -8,14 +8,14 @@ export interface Parameters {
   image: string;
   clusterIP: string;
   port: number;
-  servicePort: number;
+  servicePort?: number;
   serviceType: string;
   hostPath: string;
   nodeSelector?: StringObject;
   replicas: number;
 }
 
-export const params: Partial<Parameters> = {
+export const params: Parameters = {
   name: Name('nfs-server'),
   namespace: Namespace('default'),
   image: Image('itsthenetwork/nfs-server-aslpine:latest-arm'),
@@ -23,7 +23,7 @@ export const params: Partial<Parameters> = {
   port: Port(2049),
   servicePort: Number('servicePort'),
   serviceType: String('serviceType', 'LoadBalancer')!,
-  hostPath: String('hostPath'),
+  hostPath: String('hostPath')!,
   nodeSelector: Object('nodeSelector')! as StringObject,
   replicas: Number('replicas', 1)!,
 };
