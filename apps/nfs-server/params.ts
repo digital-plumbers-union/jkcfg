@@ -23,7 +23,7 @@ export const params: Parameters = {
   port: Port(2049),
   servicePort: Number('servicePort'),
   serviceType: String('serviceType', 'LoadBalancer')!,
-  hostPath: String('hostPath')!,
+  hostPath: String('hostPath', '/')!,
   nodeSelector: Object('nodeSelector')! as StringObject,
   replicas: Number('replicas', 1)!,
 };

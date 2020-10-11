@@ -23,7 +23,7 @@ const NfsServer = (p?: Partial<Parameters>): KubernetesObject[] => {
     nodeSelector,
     serviceType,
     replicas,
-  } = merge({}, params, p);
+  } = merge({}, params, p || {});
   const selector = appNameSelector(name);
 
   const svc = new k8s.core.v1.Service(name, {
