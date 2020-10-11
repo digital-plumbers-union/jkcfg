@@ -12,7 +12,7 @@ import * as k8s from '@jkcfg/kubernetes/api';
 import { merge } from 'lodash-es';
 import { Parameters, params } from './params';
 
-const spotifyd = (p?: Partial<Parameters>) => {
+const Spotifyd = (p?: Partial<Parameters>) => {
   const {
     name,
     namespace,
@@ -113,4 +113,4 @@ const spotifyd = (p?: Partial<Parameters>) => {
   return finalize(resources, { labels: selector, namespace });
 };
 
-export default spotifyd;
+export { Spotifyd };
