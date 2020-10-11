@@ -11,7 +11,7 @@ import * as k8s from '@jkcfg/kubernetes/api';
 import { merge } from 'lodash-es';
 import { Parameters, params } from './params';
 
-export const nfsServer = (p?: Partial<Parameters>): KubernetesObject => {
+export const nfsServer = (p?: Partial<Parameters>): KubernetesObject[] => {
   const {
     name,
     namespace,
