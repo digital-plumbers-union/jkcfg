@@ -1,12 +1,13 @@
 import {
-  image,
-  ingress,
-  name,
-  namespace,
-  persistence,
-  port,
-  StringObject,
-} from '@dpu/jkcfg-k8s';
+  Image,
+  Ingress,
+  IngressParameter,
+  Name,
+  Namespace,
+  Persistence,
+  PersistenceParameter,
+  Port,
+} from '@dpu/jkcfg-k8s/parameters';
 import { Number, String } from '@jkcfg/std/param';
 
 export interface Parameters {
@@ -16,24 +17,18 @@ export interface Parameters {
   maxSize: number;
   port: number;
   htpasswd: string | undefined;
-  // TODO: make these shareable interfaces
-  ingress: {
-    enabled: boolean | undefined;
-    annotations: StringObject | undefined;
-    tls: string | undefined;
-    host: string | undefined;
-  };
-  persistence: { storageClass: string | undefined; size: string | undefined };
+  ingress: IngressParameter;
+  persistence: PersistenceParameter;
 }
 
 // Directly based on https://github.com/buchgr/bazel-remote#command-line-flags
 export const params: Parameters = {
-  name: name('bazel-remote'),
-  namespace: namespace('bazel-remote'),
-  image: image('buchgr/bazel-remote-cache'),
+  name: Name('bazel-remote'),
+  namespace: Namespace('bazel-remote'),
+  image: Image('buchgr/bazel-remote-cache'),
   maxSize: Number('maxSize', 100)!,
-  port: port(8080),
+  port: Port(8080),
   htpasswd: String('htpasswd-secret'),
-  ingress,
-  persistence: persistence('100Gi'),
+  ingress: Ingress(),
+  persistence: Persistence('100Gi'),
 };
