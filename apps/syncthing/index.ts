@@ -1,10 +1,10 @@
 import { valuesForGenerate } from '@jkcfg/kubernetes/generate';
-import { syncthing } from './lib';
+import Syncthing from './lib';
 
 /**
  * `jkcfg generate` friendly export, can provide parameters via command line
  */
-export default valuesForGenerate(syncthing());
+export default valuesForGenerate(Syncthing());
 
 /**
  * Export for TypeScript/JavaScript consumers and other libraries rendered

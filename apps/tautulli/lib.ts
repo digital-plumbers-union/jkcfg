@@ -15,7 +15,7 @@ import * as k8s from '@jkcfg/kubernetes/api';
 import { merge } from 'lodash-es';
 import { Parameters, params } from './params';
 
-export const tautulli = (p?: Partial<Parameters>) => {
+const tautulli = (p?: Partial<Parameters>) => {
   const {
     name,
     port,
@@ -102,3 +102,5 @@ export const tautulli = (p?: Partial<Parameters>) => {
 
   return finalize(resources, { labels: selector, namespace });
 };
+
+export default tautulli;

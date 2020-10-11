@@ -8,7 +8,7 @@ import {
 import { isUndefined, merge } from 'lodash-es';
 import { Parameters, params } from './params';
 
-export const NfsClientProvisioner = (p?: Parameters) => {
+const NfsClientProvisioner = (p?: Parameters) => {
   const { name, image, provisionerName, nfs, namespace } = merge(params, p);
   const selector = appNameSelector(name);
 
@@ -66,3 +66,5 @@ const storageClass = (name: string, provisioner: string) => ({
     archiveOnDelete: 'false',
   },
 });
+
+export default NfsClientProvisioner;

@@ -113,4 +113,4 @@ const spotifyd = (p?: Partial<Parameters>) => {
   return finalize(resources, { labels: selector, namespace });
 };
 
-export { spotifyd };
+export default spotifyd;

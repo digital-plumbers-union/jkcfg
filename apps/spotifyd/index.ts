@@ -1,10 +1,10 @@
 import { valuesForGenerate } from '@jkcfg/kubernetes/generate';
-import { spotifyd } from './lib';
+import Spotifyd from './lib';
 
 /**
  * `jkcfg generate` friendly export, can provide parameters via command line
  */
-export default valuesForGenerate(spotifyd());
+export default valuesForGenerate(Spotifyd());
 
 /**
  * Export for TypeScript/JavaScript consumers and other libraries rendered
