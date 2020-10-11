@@ -38,7 +38,8 @@ const Monerod = (p?: Partial<Parameters>): KubernetesObject[] => {
 
   const selector = appNameSelector(name);
 
-  const createSecrets = secrets.rpcCreds || secrets.walletPass;
+  const createSecrets =
+    (secrets.rpcCreds?.user && secrets.rpcCreds?.pass) || secrets.walletPass;
 
   const resources: KubernetesObject[] = [
     PVC(name, {

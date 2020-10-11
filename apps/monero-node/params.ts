@@ -37,8 +37,9 @@ export const params: Parameters = {
   sealedSecrets: Boolean('sealedsecrets', false)!,
   secrets: {
     rpcCreds: {
-      user: String('moneroduser')!,
-      pass: String('monerodpass')!,
+      user: String('monerod-user')!,
+      pass: String('monerod-pass')!,
     },
+    walletPass: String('monerod-wallet-pass')!,
   },
 };
