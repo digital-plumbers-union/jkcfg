@@ -1,5 +1,5 @@
 import { valuesForGenerate } from '@jkcfg/kubernetes/generate';
-import { NfsClientProvisioner } from './lib';
+import NfsClientProvisioner from './lib';
 
 /**
  * `jkcfg generate` friendly export, can provide parameters via command line
