@@ -1,5 +1,5 @@
 import { Boolean, Number, Object, String } from '@jkcfg/std/param';
-// separate imports due to bug in transform paths
+import { isUndefined } from 'lodash-es';
 import { StringObject } from '../models';
 
 /**
@@ -58,13 +58,15 @@ export const Timezone = (d: string = 'America/New_York') =>
  * Interface representing jkcfg parameters
  */
 export interface IngressParameter {
-  enabled: boolean | undefined;
-  annotations: StringObject | undefined;
-  tls: string | undefined;
-  host: string | undefined;
+  enabled?: boolean;
+  annotations?: StringObject;
+  tls?: string;
+  host: string;
 }
 
-export const Ingress = (params?: IngressParameter): IngressParameter => ({
+export const Ingress = (
+  params?: IngressParameter
+): Partial<IngressParameter> => ({
   enabled: Boolean('ingress.enabled', params?.enabled || false),
   annotations: Object('ingress.annotations', params?.annotations || {}) as
     | StringObject
@@ -73,13 +75,21 @@ export const Ingress = (params?: IngressParameter): IngressParameter => ({
   host: String('host', params?.host || undefined),
 });
 
+export function AssertIngressParameter(
+  value: any
+): asserts value is IngressParameter {
+  if (isUndefined(value)) throw new Error('IngressParameter is not set');
+  if (isUndefined(value.host))
+    throw new Error('Host must be set on IngressParameter');
+}
+
 /**
  * Persistence / PVCs
  */
 
 export interface PersistenceParameter {
-  storageClass: string | undefined;
-  size: string | undefined;
+  storageClass: string;
+  size: string;
 }
 
 /**
@@ -87,9 +97,17 @@ export interface PersistenceParameter {
  * @param storageClass
  */
 export const Persistence = (
-  size?: string,
+  size: string,
   storageClass?: string
-): PersistenceParameter => ({
+): Partial<PersistenceParameter> => ({
   storageClass: String('persistence.storageClass', storageClass),
-  size: String('persistence.size', size),
+  size: String('persistence.size', size)!,
 });
+
+export function AssertPersistenceParameter(
+  value: any
+): asserts value is PersistenceParameter {
+  if (isUndefined(value)) throw new Error('PersistenceParameter is not set');
+  if (isUndefined(value.size))
+    throw new Error('PeristenceParameter.size is not set');
+}
