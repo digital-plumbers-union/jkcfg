@@ -17,7 +17,7 @@ import * as k8s from '@jkcfg/kubernetes/api';
 import { merge } from 'lodash-es';
 import { Parameters, params } from './params';
 
-const syncthing = (p?: Partial<Parameters>) => {
+const Syncthing = (p?: Partial<Parameters>) => {
   const {
     name,
     namespace,
@@ -111,4 +111,4 @@ const syncthing = (p?: Partial<Parameters>) => {
   return finalize(resources, { labels: selector, namespace });
 };
 
-export default syncthing;
+export { Syncthing };
