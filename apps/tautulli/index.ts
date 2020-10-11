@@ -1,5 +1,5 @@
 import { valuesForGenerate } from '@jkcfg/kubernetes/generate';
-import Tautulli from './lib';
+import { Tautulli } from './lib';
 
 /**
  * `jkcfg generate` friendly export, can provide parameters via command line
