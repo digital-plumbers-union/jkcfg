@@ -1,10 +1,10 @@
 import { valuesForGenerate } from '@jkcfg/kubernetes/generate';
-import Monero from './lib';
+import { Monerod } from './lib';
 
 /**
  * `jkcfg generate` friendly export, can provide parameters via command line
  */
-export default valuesForGenerate(Monero());
+export default valuesForGenerate(Monerod());
 
 /**
  * Export for TypeScript/JavaScript consumers and other libraries rendered

@@ -21,7 +21,7 @@ import { Parameters, params } from './params';
  * Renders a deployable set of manifests for a Monero node.
  * @param p
  */
-const monerod = (p?: Partial<Parameters>): KubernetesObject[] => {
+const Monerod = (p?: Partial<Parameters>): KubernetesObject[] => {
   const {
     name,
     namespace,
@@ -144,4 +144,4 @@ const monerod = (p?: Partial<Parameters>): KubernetesObject[] => {
   return finalize(resources, { labels: selector, namespace });
 };
 
-export default monerod;
+export { Monerod };
