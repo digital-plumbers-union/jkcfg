@@ -9,7 +9,7 @@
   "module": "index.js",
   "dependencies": {
     "@jkcfg/kubernetes": "0.6.0",
-    "@kubernetes/client-node": "0.11.0",
+    "@kubernetes/client-node": "0.12.3",
     "@jkcfg/std": "0.3.2",
     "lodash-es": "4.17.15"
   }
