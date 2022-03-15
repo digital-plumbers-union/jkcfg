@@ -7,7 +7,7 @@
     "@dpu/jkcfg-k8s": "0.0.0-PLACEHOLDER",
     "@jkcfg/kubernetes": "0.6.0",
     "@jkcfg/std": "0.3.2",
-    "lodash-es": "4.17.15"
+    "lodash-es": "4.17.21"
   },
   "repository": "github:digital-plumbers-union/jkcfg",
   "license": "MIT",
